@@ -27,22 +27,64 @@
       z-index: 1000;
     }
 
-    nav ul {
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-size: 1.5rem;
+      color: #569cd6;
+    }
+
+    .nav-menu {
       display: flex;
       list-style: none;
-      justify-content: center;
       gap: 2rem;
     }
 
-    nav a {
+    .nav-menu li {
+      display: inline-block;
+    }
+
+    .nav-menu a {
       color: #569cd6;
       text-decoration: none;
       font-size: 1.1rem;
       transition: color 0.3s;
     }
 
-    nav a:hover {
+    .nav-menu a:hover {
       color: #4ec9b0;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #569cd6;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
     }
 
     section {
@@ -155,22 +197,48 @@
         font-size: 1.5rem;
       }
 
-      nav ul {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-menu {
+        display: none;
         flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #252526;
+        padding: 1rem;
+        border-top: 1px solid #3c3c3c;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .nav-menu li {
+        margin: 0.5rem 0;
       }
     }
   </style>
 </head>
 <body>
   <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/projects">Projects</a></li>
-      <li><a href="/contact">Contact</a></li>
-    </ul>
+    <div class="nav-container">
+      <div class="nav-logo">Ashirwad Dwivedi</div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="about.html#about">About</a></li>
+        <li><a href="projects.html#projects">Projects</a></li>
+        <li><a href="contact.html#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
   <section id="home">
@@ -207,12 +275,44 @@
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-      <input type="submit" value="Send">
+      <button type="submit">Send</button>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+    <p>© 2025 Ashirwad Dwivedi. All rights reserved.</p>
   </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Smooth scrolling for nav links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+          const sectionId = href.substring(1);
+          document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.location.href = href;
+        }
+      });
+    });
+  </script>
 </body>
-</html>
+  </html>
