@@ -54,7 +54,6 @@ def submit():
         return redirect('/contact')
     except Exception as e:
         db.session.rollback()
-        flash(f'An error occurred: {e}', 'error')
         
         return redirect('/contact')
 
