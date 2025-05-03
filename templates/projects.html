@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects - My Developer Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Fira Code', monospace;
+    }
+
+    body {
+      background: #1a1a1a;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: #252526;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #569cd6;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #4ec9b0;
+    }
+
+    section {
+      padding: 5rem 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #projects {
+      background: linear-gradient(135deg, #1a1a1a 50%, #252526 100%);
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #4ec9b0;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #569cd6;
+      margin-bottom: 2rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .project-card {
+      background: #252526;
+      padding: 1.5rem;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #3c3c3c;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-card h3 {
+      color: #4ec9b0;
+      margin-bottom: 1rem;
+    }
+
+    .project-card p {
+      color: #d4d4d4;
+      font-size: 1rem;
+    }
+
+    .project-card a {
+      color: #569cd6;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+      transition: color 0.3s;
+    }
+
+    .project-card a:hover {
+      color: #4ec9b0;
+    }
+
+    footer {
+      background: #252526;
+      text-align: center;
+      padding: 1rem;
+      color: #569cd6;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="projects">
+    <h1>My Projects</h1>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Project One</h3>
+        <p>A web app built with React and Node.js, showcasing real-time data visualization for dynamic user experiences.</p>
+        <a href="https://github.com/yourusername/project-one" target="_blank">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Project Two</h3>
+        <p>A Python-based CLI tool designed to automate repetitive coding tasks, improving developer productivity.</p>
+        <a href="https://github.com/yourusername/project-two" target="_blank">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Project Three</h3>
+        <p>A responsive portfolio site (this one!) with a sleek, editor-inspired design, built with HTML, CSS, and JavaScript.</p>
+        <a href="https://github.com/yourusername/portfolio" target="_blank">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Ashirwad Dwivedi. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth scrolling for nav links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+          const sectionId = href.substring(1);
+          document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.location.href = href;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

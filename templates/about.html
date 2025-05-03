@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - My Developer Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Fira Code', monospace;
+    }
+
+    body {
+      background: #1a1a1a;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: #252526;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #569cd6;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #4ec9b0;
+    }
+
+    section {
+      padding: 5rem 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #about {
+      background: linear-gradient(135deg, #1a1a1a 50%, #252526 100%);
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #4ec9b0;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #569cd6;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      max-width: 600px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 800px;
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .skill-item {
+      background: #252526;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #3c3c3c;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .skill-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .skill-item h3 {
+      color: #4ec9b0;
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      background: #252526;
+      text-align: center;
+      padding: 1rem;
+      color: #569cd6;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <h1>About Me</h1>
+    <p>I'm Ashirwad Dwivedi, a passionate developer with a knack for creating intuitive and performant web applications. With a strong foundation in JavaScript, Python, and modern frameworks, I enjoy transforming ideas into reality through clean code and thoughtful design.</p>
+    <h2>My Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <h3>JavaScript</h3>
+        <p>Proficient in ES6+, React, and Node.js for dynamic web solutions.</p>
+      </div>
+      <div class="skill-item">
+        <h3>Python</h3>
+        <p>Experienced in building CLI tools and backend APIs with Flask.</p>
+      </div>
+      <div class="skill-item">
+        <h3>HTML & CSS</h3>
+        <p>Crafting responsive and accessible designs with modern CSS.</p>
+      </div>
+      <div class="skill-item">
+        <h3>Git & CI/CD</h3>
+        <p>Version control and automated workflows for efficient development.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ashirwad Dwivedi. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth scrolling for nav links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+          const sectionId = href.substring(1);
+          document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.location.href = href;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
