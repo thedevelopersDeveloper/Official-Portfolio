@@ -50,8 +50,6 @@ def submit():
         new_message = Data(name=name, email=email, message=message)
         db.session.add(new_message)
         db.session.commit()
-
-        flash('Your message has been sent successfully!', 'success')
         
         return redirect('/contact')
     except Exception as e:
